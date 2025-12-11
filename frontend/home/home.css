@@ -295,6 +295,11 @@ body {
         width: 100%;
         max-width: 200px;
         height: 200px;
+        margin: 0 auto;
+    }
+    
+    .collaborate-item:hover .cube {
+        animation: none;
     }
     
     .cube-front { transform: translateZ(100px); }
