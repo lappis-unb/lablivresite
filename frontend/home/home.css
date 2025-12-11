@@ -791,12 +791,29 @@ body {
     margin: 0;
     padding: 0;
     background-color: #422556;
+    overflow: hidden;
+    position: relative;
 }
 
 .wave-divider svg {
-    width: 100%;
+    width: 120%;
     height: 100%;
     display: block;
+    position: absolute;
+    left: -10%;
+    animation: wave-animation 6s ease-in-out infinite;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-5%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* Responsive Wave Divider */
