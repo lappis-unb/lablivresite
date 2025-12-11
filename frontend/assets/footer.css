@@ -104,15 +104,38 @@
         padding: 40px 20px 20px;
     }
     
+    .footer-container {
+        text-align: center;
+    }
+    
+    .footer-logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    
+    .footer-links {
+        text-align: center;
+    }
+    
+    .footer-links h5 {
+        text-align: center;
+    }
+    
+    .footer-links ul {
+        text-align: center;
+    }
+    
     .footer-bottom {
         flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
+        align-items: center;
+        text-align: center;
     }
     
     .footer-legal {
         flex-direction: column;
         gap: 10px;
+        align-items: center;
     }
 }
 
