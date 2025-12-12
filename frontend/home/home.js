@@ -1,6 +1,7 @@
 // Carrossel de Projetos com Swiper
 document.addEventListener('DOMContentLoaded', () => {
-    const swiper = new Swiper('.projects-carousel', {
+    // Carrossel de Projetos com Swiper
+    const projectsSwiper = new Swiper('.projects-carousel', {
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,

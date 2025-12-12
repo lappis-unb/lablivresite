@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./frontend/assets/navbar.css">
     <link rel="stylesheet" href="./frontend/assets/footer.css">
     <link rel="stylesheet" href="./frontend/home/home.css">
+    <link rel="stylesheet" href="./frontend/home/hero-carousel.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -42,36 +43,51 @@
     </header>
 
     <section class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Call to Action<br>
-                    Fabulosa
-                </h1>
-                <p class="hero-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                </p>
-            </div>
-            <div class="hero-image-flip">
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <!-- Imagem da frente -->
+        <div class="swiper hero-carousel">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide hero-slide">
+                    <div class="hero-slide-bg" style="background-image: url('./frontend/assets/img/equipelab.jpg');"></div>
+                    <div class="hero-overlay"></div>
+                    <div class="hero-container">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                LabLivre
+                            </h1>
+                            <p class="hero-text">
+                                O futuro da tecnologia é aberto, inclusivo e colaborativo. No Lab Livre, acreditamos no poder do conhecimento compartilhado para transformar vidas. Conecte-se, colabore e seja parte da mudança!
+                            </p>
+                            <button class="hero-btn">Saiba mais ></button>
                         </div>
-                        <div class="flip-card-back">
-                            <!-- Imagem de trás -->
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide hero-slide hero-slide-dark">
+                    <div class="hero-slide-dark-overlay"></div>
+                    <div class="hero-container hero-container-dark">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                Mepa  (Projeto de Pesquisa)
+                            </h1>
+                            <p class="hero-text">
+                                Plataforma de eficiência energética que usa dados para otimizar contratos de energia e reduzir custos nas instituições.
+                            </p>
+                            <p class="hero-text">Financiamento - MEC</p>
+                            <button class="hero-btn" onclick="window.open('https://mepaenergia.org/', '_blank')">Saiba mais ></button>
+                        </div>
+                        <div class="hero-image-small">
+                            <img src="./frontend/assets/img/mepa.png" alt="Mepa">
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Navigation arrows -->
+            <div class="swiper-button-next hero-nav-next"></div>
+            <div class="swiper-button-prev hero-nav-prev"></div>
+            <!-- Pagination dots -->
+            <div class="swiper-pagination hero-pagination"></div>
         </div>
     </section>
-
-    <div class="wave-divider">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="var(--primary-05)" fill-opacity="1" d="M0,160L21.8,149.3C43.6,139,87,117,131,133.3C174.5,149,218,203,262,213.3C305.5,224,349,192,393,149.3C436.4,107,480,53,524,74.7C567.3,96,611,192,655,197.3C698.2,203,742,117,785,85.3C829.1,53,873,75,916,90.7C960,107,1004,117,1047,117.3C1090.9,117,1135,107,1178,90.7C1221.8,75,1265,53,1309,58.7C1352.7,64,1396,96,1418,112L1440,128L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path>
-        </svg>
-    </div>
 
     <section class="collaborate-section" id="colabore">
         <div class="collaborate-container">
@@ -483,6 +499,7 @@
     </footer>
 
     <script src="./frontend/home/home.js"></script>
+    <script src="./frontend/home/hero-carousel.js"></script>
 
 </body>
 </html>
