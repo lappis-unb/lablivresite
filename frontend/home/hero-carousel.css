@@ -343,3 +343,19 @@
     }
 }
 
+/* Slide 3 - Brasil Participativo */
+.hero-slide-brasil {
+    position: relative;
+}
+
+.hero-slide-bg-brasil {
+    filter: none !important;
+    transform: none !important;
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.hero-slide-brasil .hero-overlay {
+    display: none;
+}
+
