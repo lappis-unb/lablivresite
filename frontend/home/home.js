@@ -16,13 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         
         pagination: {
-            el: '.swiper-pagination',
+            el: '.projects-carousel-wrapper .swiper-pagination',
             clickable: true,
+            type: 'bullets',
         },
         
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.projects-carousel-wrapper .swiper-button-next',
+            prevEl: '.projects-carousel-wrapper .swiper-button-prev',
         },
     });
 });
