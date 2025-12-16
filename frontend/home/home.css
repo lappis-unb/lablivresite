@@ -448,7 +448,8 @@ body {
     font-weight: 700;
     line-height: 1.2;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
+    margin-bottom: 60px;
 }
 
 .training-description {
@@ -466,12 +467,31 @@ body {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 15px;
     box-shadow: 0 4px 12px var(--primary-04);
     border: 2px solid var(--primary-04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+}
+
+.training-row-custom {
+    margin: 0;
+}
+
+.training-row-custom > div {
+    margin-bottom: 40px;
+    padding-left: 0;
+    padding-right: 60px;
+}
+
+.training-row-custom > div:nth-child(even) {
+    padding-left: 60px;
+    padding-right: 0;
+}
+
+.training-row-custom > div:nth-child(n+5) {
+    margin-bottom: 0;
 }
 
 .training-card:hover {
@@ -515,24 +535,56 @@ body {
 
     .training-title {
         font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    .training-row-custom {
+        margin: 0 -15px;
+    }
+
+    .training-row-custom > div {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 30px;
+    }
+
+    .training-row-custom > div:nth-child(even) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .training-row-custom > div:nth-child(n+5) {
+        margin-bottom: 30px;
+    }
+
+    .training-card {
+        padding: 25px;
+    }
+
+    .training-card-title {
+        font-size: 20px;
+    }
+
+    .training-card-description {
+        font-size: 15px;
     }
 }
 
-.research-section {
+.capacitacao-section {
     width: 100%;
     padding: 100px 40px;
     background: var(--primary-05);
 }
 
-.research-section .container {
+.capacitacao-section .container {
     max-width: 1200px;
 }
 
-.research-section .row:first-child {
+.capacitacao-section .row:first-child {
     margin-bottom: 40px;
 }
 
-.research-title {
+.capacitacao-title {
     font-size: 48px;
     font-weight: 700;
     line-height: 1.2;
@@ -540,7 +592,7 @@ body {
     text-align: left;
 }
 
-.research-description {
+.capacitacao-description {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
@@ -549,7 +601,7 @@ body {
     max-width: 800px;
 }
 
-.research-card {
+.capacitacao-card {
     background-color: #e0e0e0;
     border-radius: 8px;
     padding: 30px;
@@ -563,12 +615,12 @@ body {
     height: 100%;
 }
 
-.research-card:hover {
+.capacitacao-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px var(--primary-04);
 }
 
-.research-image-placeholder {
+.capacitacao-image-placeholder {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -576,7 +628,7 @@ body {
     flex-shrink: 0;
 }
 
-.research-card-title {
+.capacitacao-card-title {
     font-size: 24px;
     font-weight: 700;
     line-height: 1.2;
@@ -586,7 +638,7 @@ body {
     width: 100%;
 }
 
-.research-card-description {
+.capacitacao-card-description {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
@@ -596,13 +648,13 @@ body {
     width: 100%;
 }
 
-/* Responsive Research Section */
+/* Responsive Capacitação Section */
 @media (max-width: 768px) {
-    .research-section {
+    .capacitacao-section {
         padding: 60px 20px;
     }
 
-    .research-title {
+    .capacitacao-title {
         font-size: 36px;
     }
 }
