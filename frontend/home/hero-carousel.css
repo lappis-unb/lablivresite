@@ -357,7 +357,7 @@
     filter: none;
     transform: none;
     background-size: cover;
-    background-position: center bottom;
+    background-position: center center;
 }
 
 .hero-slide-brasil .hero-overlay {
