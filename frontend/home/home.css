@@ -246,7 +246,7 @@ body {
 /* Flip Card Container */
 .project-card-flip {
     width: 100%;
-    height: 500px;
+    height: 700px;
     perspective: 1000px;
     position: relative;
 }
@@ -296,7 +296,7 @@ body {
     background-color: var(--primary-03);
     border-radius: 4px;
     overflow: hidden;
-    height: 500px;
+    height: 700px;
     box-shadow: none;
     border: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -310,9 +310,34 @@ body {
 
 .project-image-placeholder {
     width: 100%;
-    flex: 2;
-    background: #e0e0e0;
+    flex: 0.6;
+    min-height: 200px;
+    background: #ffffff;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.project-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.project-text-logo {
+    font-size: 48px;
+    font-weight: 700;
+    color: #333333;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .projects-carousel-wrapper .swiper-button-prev,
@@ -368,14 +393,15 @@ body {
 }
 
 .project-content {
-    flex: 1;
-    padding: 30px;
+    flex: 1.4;
+    padding: 40px;
     background-color: var(--primary-03);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     justify-content: flex-start;
     color: #ffffff;
+    min-height: 0;
 }
 
 .project-title {
@@ -391,7 +417,36 @@ body {
     font-weight: 400;
     line-height: 1.6;
     color: #ffffff;
-    margin: 0;
+    margin: 0 0 15px 0;
+}
+
+.project-financing {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 10px 0;
+}
+
+.project-financing strong {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.project-link {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: opacity 0.3s ease;
+    flex-shrink: 0;
+}
+
+.project-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
 }
 
 /* Responsive Projects Section */
