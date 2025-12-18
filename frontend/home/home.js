@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         breakpoints: {
             769: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 30,
                 allowTouchMove: false, // Desabilita arrastar no desktop
             }
