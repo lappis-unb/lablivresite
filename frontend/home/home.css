@@ -449,16 +449,15 @@ body {
 }
 
 .training-card {
-    background-color: #e0e0e0;
+    background-color: #ffffff;
     border-radius: 8px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
-    box-shadow: 0 4px 12px var(--primary-02);
     border: 2px solid var(--primary-02);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     height: 100%;
 }
 
@@ -483,7 +482,6 @@ body {
 
 .training-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px var(--primary-02);
 }
 
 .training-image-placeholder {
@@ -588,15 +586,13 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 4px 12px var(--primary-04);
     border: 2px solid var(--primary-04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     height: 100%;
 }
 
 .capacitacao-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px var(--primary-04);
 }
 
 .capacitacao-logo-wrapper {
@@ -914,22 +910,20 @@ body {
 
 /* Publicações Cards - Estilo similar à Capacitação, mas menor */
 .publicacao-card {
-    background-color: #e0e0e0;
+    background-color: #ffffff;
     border-radius: 8px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    box-shadow: 0 4px 12px var(--primary-04);
     border: 2px solid var(--primary-04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     height: 100%;
 }
 
 .publicacao-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px var(--primary-04);
 }
 
 .publicacao-logo-wrapper {

@@ -130,9 +130,8 @@
 .team-card {
     width: 300px;
     height: 320px;
-    background: #E0E0E0;
+    background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
     overflow: hidden;
 }
