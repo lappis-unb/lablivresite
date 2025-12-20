@@ -125,6 +125,8 @@
     gap: 16px;
     width: max-content;
     will-change: transform;
+    transform: translateZ(0); /* Força aceleração por GPU */
+    backface-visibility: hidden; /* Melhora performance da animação */
 }
 
 .team-card {
@@ -142,6 +144,8 @@
     display: block;
     object-fit: cover;
     object-position: center;
+    transform: translateZ(0); /* Força aceleração por GPU */
+    image-rendering: -webkit-optimize-contrast; /* Otimiza renderização */
 }
 
 .team-card img.team-img-top {

@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const tracks = document.querySelectorAll('.team-track');
     
     tracks.forEach(track => {
+        // Adiciona lazy loading em todas as imagens originais
+        const originalImages = track.querySelectorAll('.team-card img');
+        originalImages.forEach(img => {
+            if (!img.hasAttribute('loading')) {
+                img.setAttribute('loading', 'lazy');
+            }
+        });
+        
         // Clona todos os cards originais
         const cards = track.querySelectorAll('.team-card');
         const clonedCards = Array.from(cards).map(card => card.cloneNode(true));
@@ -31,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(contactSection);
     }
 
-    // Animação JavaScript para velocidade constante
+    // Animação JavaScript para velocidade constante - otimizada
     const marquees = document.querySelectorAll('.team-marquee');
     const speed = 30; // pixels por segundo - velocidade constante
     
@@ -42,15 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let position = 0;
         let animationId = null;
         let lastTime = null;
+        let trackWidth = 0; // Cache da largura
+        let isAnimating = false;
         const isReverse = marquee.classList.contains('marquee-bottom');
         
         // Calcula a largura total do conteúdo original (metade do total, já que está duplicado)
-        const getTrackWidth = () => {
+        // Cacheado para evitar recálculos
+        const calculateTrackWidth = () => {
             const cards = track.querySelectorAll('.team-card');
-            const originalWidth = Array.from(cards).slice(0, cards.length / 2).reduce((sum, card) => {
-                return sum + card.offsetWidth + 16; // 16px é o gap
-            }, 0);
-            return originalWidth;
+            const cardCount = cards.length / 2; // Metade são originais
+            let width = 0;
+            for (let i = 0; i < cardCount; i++) {
+                width += cards[i].offsetWidth + 16; // 16px é o gap
+            }
+            return width;
         };
         
         const animate = (currentTime) => {
@@ -60,8 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const deltaTime = (currentTime - lastTime) / 1000; // converter para segundos
             lastTime = currentTime;
-            
-            const trackWidth = getTrackWidth();
             
             if (isReverse) {
                 position += speed * deltaTime;
@@ -81,70 +92,70 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Inicia a animação
         const startAnimation = () => {
-            const trackWidth = getTrackWidth();
+            if (isAnimating) return;
+            isAnimating = true;
+            trackWidth = calculateTrackWidth();
             position = isReverse ? -trackWidth : 0;
             lastTime = null;
             animationId = requestAnimationFrame(animate);
         };
         
-        // Aguarda o carregamento das imagens para calcular corretamente
-        const images = track.querySelectorAll('img');
-        let loadedImages = 0;
-        let hasStarted = false;
-        
-        const tryStartAnimation = () => {
-            if (!hasStarted) {
-                hasStarted = true;
-                startAnimation();
+        // Para a animação quando não visível
+        const stopAnimation = () => {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
             }
+            isAnimating = false;
         };
         
-        // Timeout de segurança: inicia a animação após 3 segundos mesmo se nem todas as imagens carregarem
-        const timeoutId = setTimeout(() => {
-            tryStartAnimation();
-        }, 3000);
-        
-        if (images.length === 0) {
-            clearTimeout(timeoutId);
-            tryStartAnimation();
-        } else {
-            images.forEach(img => {
-                // Trata erro de carregamento
-                img.addEventListener('error', () => {
-                    loadedImages++;
-                    if (loadedImages === images.length) {
-                        clearTimeout(timeoutId);
-                        tryStartAnimation();
+        // Usa IntersectionObserver para só animar quando visível
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Aguarda um pouco para garantir que as imagens estejam carregadas
+                    const images = track.querySelectorAll('img');
+                    let loadedImages = 0;
+                    const totalImages = images.length;
+                    
+                    if (totalImages === 0) {
+                        startAnimation();
+                        return;
                     }
-                });
-                
-                if (img.complete) {
-                    loadedImages++;
-                    if (loadedImages === images.length) {
-                        clearTimeout(timeoutId);
-                        tryStartAnimation();
+                    
+                    // Conta imagens já carregadas
+                    images.forEach(img => {
+                        if (img.complete) loadedImages++;
+                    });
+                    
+                    // Se a maioria já carregou, inicia imediatamente
+                    if (loadedImages >= totalImages * 0.7) {
+                        startAnimation();
+                    } else {
+                        // Senão, espera um pouco mais
+                        setTimeout(() => {
+                            startAnimation();
+                        }, 500);
                     }
                 } else {
-                    img.addEventListener('load', () => {
-                        loadedImages++;
-                        if (loadedImages === images.length) {
-                            clearTimeout(timeoutId);
-                            tryStartAnimation();
-                        }
-                    });
+                    stopAnimation();
                 }
             });
-        }
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
         
-        // Recalcula quando a janela é redimensionada
+        observer.observe(marquee);
+        
+        // Recalcula quando a janela é redimensionada (debounced)
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
+                if (isAnimating) {
+                    trackWidth = calculateTrackWidth();
                 }
-                startAnimation();
             }, 250);
         });
     });
