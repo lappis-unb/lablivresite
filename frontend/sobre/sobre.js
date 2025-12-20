@@ -90,21 +90,46 @@ document.addEventListener('DOMContentLoaded', () => {
         // Aguarda o carregamento das imagens para calcular corretamente
         const images = track.querySelectorAll('img');
         let loadedImages = 0;
+        let hasStarted = false;
+        
+        const tryStartAnimation = () => {
+            if (!hasStarted) {
+                hasStarted = true;
+                startAnimation();
+            }
+        };
+        
+        // Timeout de segurança: inicia a animação após 3 segundos mesmo se nem todas as imagens carregarem
+        const timeoutId = setTimeout(() => {
+            tryStartAnimation();
+        }, 3000);
         
         if (images.length === 0) {
-            startAnimation();
+            clearTimeout(timeoutId);
+            tryStartAnimation();
         } else {
             images.forEach(img => {
+                // Trata erro de carregamento
+                img.addEventListener('error', () => {
+                    loadedImages++;
+                    if (loadedImages === images.length) {
+                        clearTimeout(timeoutId);
+                        tryStartAnimation();
+                    }
+                });
+                
                 if (img.complete) {
                     loadedImages++;
                     if (loadedImages === images.length) {
-                        startAnimation();
+                        clearTimeout(timeoutId);
+                        tryStartAnimation();
                     }
                 } else {
                     img.addEventListener('load', () => {
                         loadedImages++;
                         if (loadedImages === images.length) {
-                            startAnimation();
+                            clearTimeout(timeoutId);
+                            tryStartAnimation();
                         }
                     });
                 }
